@@ -7,6 +7,9 @@ const session = require('express-session');
 const passport = require('passport');
 const db = require('../db/_db');
 
+if (process.env.NODE_ENV === 'development') {
+  require('./localSecrets'); // this will mutate the process.env object with your secrets.
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));app.use(morgan('dev'));

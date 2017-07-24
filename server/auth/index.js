@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const User = require('../../db/models/user');
 router.post('/login', (req, res, next) => {
   User.findOne({
     where: {
@@ -34,5 +34,11 @@ router.post('/logout', (req, res, next) => {
   req.logout();
   res.sendStatus(200);
 });
+
+router.get('/me', (req, res, next) => {
+  res.json(req.user);
+});
+
+router.get('/google', passport.authenticate('google', { scope: 'email' }));
 
 module.exports = router;
