@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')))
 
 // Any routes or other various middlewares should go here!
-app.use('/api', require('./api');
+app.use('/api', require('./api'));
 
 // Make sure this is right at the end of your server logic!
 app.get('*', function (req, res, next) {
